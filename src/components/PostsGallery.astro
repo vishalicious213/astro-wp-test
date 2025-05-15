@@ -1,5 +1,9 @@
 ---
+import { getPosts } from "../scripts/index"
+const posts = await getPosts()
 ---
+<h2>Posts Gallery</h2>
+
 <section>
-    <h2>Posts Gallery</h2>
+    {posts}
 </section>

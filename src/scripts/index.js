@@ -1,6 +1,5 @@
-export const posts = getPosts()
-
-async function getPosts() {
+export async function getPosts() {
+    let postsToRender = ""
     const response = await fetch("https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts")
     
     if (!response.ok) {
@@ -8,7 +7,19 @@ async function getPosts() {
     }
 
     const data = await response.json()
-    return data
-}
 
-console.log(posts)
+    data.map(post => {
+        postsToRender += `
+            <section class="post-thumb">
+                <img 
+                    class="thumb-img" 
+                    src=${post.jetpack_featured_media_url} 
+                    alt=${post.title.rendered}
+                />
+                <h2 class="thumb-title">${post.title.rendered}</h2>
+            </section>
+        `
+    })
+
+    return postsToRender
+}
