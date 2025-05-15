@@ -1,4 +1,4 @@
-const posts = getPosts()
+export const posts = getPosts()
 
 async function getPosts() {
     const response = await fetch("https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts")
