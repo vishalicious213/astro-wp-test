@@ -5,5 +5,14 @@ const posts = await getPosts()
 <h2>Posts Gallery</h2>
 
 <section>
-    {posts}
+    {posts.map((post: any) => (
+        <section class="post-thumb">
+            <img 
+                class="thumb-img" 
+                src={post.jetpack_featured_media_url} 
+                alt={post.title.rendered}
+            />
+            <h2 class="thumb-title">{post.title.rendered}</h2>
+        </section>
+    ))}
 </section>
