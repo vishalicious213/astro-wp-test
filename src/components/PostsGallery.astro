@@ -16,3 +16,26 @@ const posts = await getPosts()
         </section>
     ))}
 </section>
+
+<style>
+    .post-thumb {
+        position: relative;
+        min-height: 33vh;
+    }
+
+    .thumb-img {
+        width: 100%;
+        min-height: 33vh;
+        object-fit: cover;
+    }
+
+    .thumb-title {
+        position: absolute;
+        bottom: 0;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        background: rgba(0, 0, 0, .3);
+    }
+</style>
