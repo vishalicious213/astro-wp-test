@@ -1,18 +1,16 @@
 ---
 import { getPosts } from "../../scripts/index"
 
-// Get all posts
-const posts = await getPosts()
+export async function getStaticPaths() {
+    const posts = await getPosts()
 
-// Get slug from URL
-const { slug } = Astro.params
-
-// Find the matching post
-const post = posts.find((p: any) => p.slug === slug)
-
-if (!post) {
-    throw new Error(`Post not found for slug: ${slug}`)
+    return posts.map((post: any) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }))
 }
+
+const { post }: { post: any } = Astro.props
 ---
 
 <html>
