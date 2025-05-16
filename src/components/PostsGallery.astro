@@ -5,15 +5,17 @@ const posts = await getPosts()
 <section class="post-gallery">
     {posts.map((post: any) => (
         <section class="post-thumb">
-            <img 
-                class="thumb-img" 
-                src={post.jetpack_featured_media_url} 
-                alt={post.title.rendered}
-            />
-            <div class="thumb-details">
-                <p class="thumb-date">{post.date.toString().slice(0,10)}</p>
-                <h2 class="thumb-title">{post.title.rendered}</h2>
-            </div>
+            <a href={`/blog/${post.slug}`}>
+                <img 
+                    class="thumb-img" 
+                    src={post.jetpack_featured_media_url} 
+                    alt={post.title.rendered}
+                />
+                <div class="thumb-details">
+                    <p class="thumb-date">{post.date.toString().slice(0,10)}</p>
+                    <h2 class="thumb-title">{post.title.rendered}</h2>
+                </div>
+            </a>
         </section>
     ))}
 </section>
@@ -31,6 +33,25 @@ const posts = await getPosts()
         min-height: 33vh;
     }
 
+    /* hidden red overlay that will appear when post is hovered */
+    .post-thumb::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 0, 0, 0.4); /* Red tint */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .post-thumb:hover::before {
+        opacity: 1;
+    }
+
     .thumb-img {
         width: 100%;
         min-height: 33vh;
@@ -46,6 +67,13 @@ const posts = await getPosts()
         text-align: center;
         background: rgba(0, 0, 0, .3);
         box-sizing: border-box;
+    }
+
+    .thumb-details {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        z-index: 2;
     }
 
     .thumb-date {
