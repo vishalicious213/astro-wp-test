@@ -10,8 +10,24 @@ import PostsGallery from "../components/PostsGallery.astro"
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro / WordPress</title>
 	</head>
+
 	<body>
 		<h1>Astro / WP Test</h1>
 		<PostsGallery />
 	</body>
 </html>
+
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: Verdana, Geneva, Tahoma, sans-serif;
+	}
+
+	h1 {
+		margin: 1rem;
+		font-weight: 400;
+        font-size: 1.25rem;
+	}
+</style>

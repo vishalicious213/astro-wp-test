@@ -2,8 +2,6 @@
 import { getPosts } from "../scripts/index"
 const posts = await getPosts()
 ---
-<h2>Posts Gallery</h2>
-
 <section class="post-gallery">
     {posts.map((post: any) => (
         <section class="post-thumb">
@@ -12,7 +10,10 @@ const posts = await getPosts()
                 src={post.jetpack_featured_media_url} 
                 alt={post.title.rendered}
             />
-            <h2 class="thumb-title">{post.title.rendered}</h2>
+            <div class="thumb-details">
+                <p class="thumb-date">{post.date.toString().slice(0,10)}</p>
+                <h2 class="thumb-title">{post.title.rendered}</h2>
+            </div>
         </section>
     ))}
 </section>
@@ -36,33 +37,45 @@ const posts = await getPosts()
         object-fit: cover;
     }
 
-    .thumb-title {
+    .thumb-details {
         position: absolute;
         bottom: 0;
         color: white;
         padding: 1rem;
         text-align: center;
-        text-transform: uppercase;
         background: rgba(0, 0, 0, .3);
+    }
+
+    .thumb-date {
+        color: white;
+        font-size: .75rem;
+        margin-bottom: .25rem;
+    }
+
+    .thumb-title {
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 1rem;
+        margin-top: 0;
     }
 
     /* MEDIA QUERIES */
 
     @media screen and (min-width: 570px) {
-    .post-thumb {
-        width: 50%;
-    }
+        .post-thumb {
+            width: 50%;
+        }
     }
 
     @media screen and (min-width: 1024px) {
-    .post-thumb {
-        width: 33%;
-    }
+        .post-thumb {
+            width: 33%;
+        }
     }
 
     @media screen and (min-width: 1440px) {
-    .post-thumb {
-        width: 25%;
-    }
+        .post-thumb {
+            width: 25%;
+        }
     }
 </style>
