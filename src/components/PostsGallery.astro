@@ -4,7 +4,7 @@ const posts = await getPosts()
 ---
 <h2>Posts Gallery</h2>
 
-<section>
+<section class="post-gallery">
     {posts.map((post: any) => (
         <section class="post-thumb">
             <img 
@@ -18,6 +18,13 @@ const posts = await getPosts()
 </section>
 
 <style>
+    .post-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        background: black;
+        margin-top: 1rem;
+    }
+
     .post-thumb {
         position: relative;
         min-height: 33vh;
@@ -37,5 +44,25 @@ const posts = await getPosts()
         text-align: center;
         text-transform: uppercase;
         background: rgba(0, 0, 0, .3);
+    }
+
+    /* MEDIA QUERIES */
+
+    @media screen and (min-width: 570px) {
+    .post-thumb {
+        width: 50%;
+    }
+    }
+
+    @media screen and (min-width: 1024px) {
+    .post-thumb {
+        width: 33%;
+    }
+    }
+
+    @media screen and (min-width: 1440px) {
+    .post-thumb {
+        width: 25%;
+    }
     }
 </style>
