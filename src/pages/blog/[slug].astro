@@ -1,0 +1,29 @@
+---
+import { getPosts } from "../../scripts/index"
+
+// Get all posts
+const posts = await getPosts()
+
+// Get slug from URL
+const { slug } = Astro.params
+
+// Find the matching post
+const post = posts.find((p: any) => p.slug === slug)
+
+if (!post) {
+    throw new Error(`Post not found for slug: ${slug}`)
+}
+---
+
+<html>
+    <head>
+        <title>{post.title.rendered}</title>
+    </head>
+
+    <body>
+        <article>
+            <h1>{post.title.rendered}</h1>
+            <div set:html={post.content.rendered}></div>
+        </article>
+    </body>
+</html>
