@@ -82,6 +82,12 @@ const { post }: { post: any } = Astro.props
         max-width: 800px;
     }
 
+    :global(.wp-block-heading) {
+        font-size: 1.75rem;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
     :global(.post-content h2) {
         font-size: 1.5rem;
         font-weight: 500;
@@ -110,5 +116,19 @@ const { post }: { post: any } = Astro.props
         font-size: .8rem;
         width: 90%;
         line-height: 1.5;
+    }
+
+    :global(figure) {
+        border: 2px solid red;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    :global(.wp-block-image img) {
+        border: 2px solid orange;
+        display: block;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
     }
 </style>
