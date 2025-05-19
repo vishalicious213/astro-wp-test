@@ -107,6 +107,13 @@ const { post }: { post: any } = Astro.props
     }
 
     :global(.post-content code) {
+        background: #F2F2F2;
+        padding: 0 .25rem;
+        word-wrap: break-word;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    :global(.wp-block-code code) {
         display: inline-block;
         background: #F2F2F2;
         padding: 1rem;
@@ -149,7 +156,7 @@ const { post }: { post: any } = Astro.props
     :global(.wp-block-list) {
         list-style-type: square;
     }
-    
+
     :global(.wp-block-list li) {
         margin-bottom: .25rem;
         font-size: .9rem;
