@@ -123,6 +123,15 @@ const { post }: { post: any } = Astro.props
         margin-left: 0;
     }
 
+    :global(.wp-block-gallery) {
+        display: flex;
+        gap: .5rem;
+    }
+
+    :global(.wp-block-gallery figure) {
+        margin: 0;
+    }
+
     :global(.wp-block-image img) {
         display: block;
         max-width: 100%;
