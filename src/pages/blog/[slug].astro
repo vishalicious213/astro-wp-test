@@ -22,7 +22,7 @@ const { post }: { post: any } = Astro.props
     <body>
         <article>
             <img class="featured-img" src={post.jetpack_featured_media_url} alt="">
-            <h1>{post.title.rendered}</h1>
+            <h1 class="post-title">{post.title.rendered}</h1>
             <div class="post-content" set:html={post.content.rendered}></div>
         </article>
     </body>
@@ -47,12 +47,20 @@ const { post }: { post: any } = Astro.props
         object-fit: cover;
     }
 
-    h1 {
+    .post-title {
+        position: absolute;
+        top: 2rem;
+        left: 0;
+        right: 0;
+        color: white;
+        background: rgba(0, 0, 0, .3);
         font-size: 2rem;
         font-weight: 500;
         text-transform: uppercase;
-        margin-bottom: 1rem;
         text-align: center;
+        padding: 1rem;
+        margin: auto;
+        max-width: 600px;
     }
 
 /* .POST-CONTENT is injected raw HTML from WP, not scoped with Astro classes */
