@@ -146,6 +146,10 @@ const { post }: { post: any } = Astro.props
         object-fit: contain;
     }
 
+    :global(.wp-block-list) {
+        list-style-type: square;
+    }
+    
     :global(.wp-block-list li) {
         margin-bottom: .25rem;
         font-size: .9rem;
