@@ -40,6 +40,19 @@ const { post }: { post: any } = Astro.props
         margin-bottom: 1rem;
     }
 
+    :global(.post-content) {
+        margin: 1rem auto;
+        padding: 0 1rem;
+        max-width: 800px;
+    }
+
+    :global(.post-content h2) {
+        font-size: 1.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
     :global(.post-content p) {
         margin-bottom: 1rem;
         font-size: .9rem;
