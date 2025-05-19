@@ -58,6 +58,11 @@ const { post }: { post: any } = Astro.props
         font-size: .9rem;
     }
 
+    :global(.post-content a) {
+        word-wrap: break-word;
+        color: #AB1226;
+    }
+
     :global(.post-content code) {
         display: inline-block;
         background: #F2F2F2;
