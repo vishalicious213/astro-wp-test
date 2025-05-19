@@ -18,8 +18,10 @@ const { post }: { post: any } = Astro.props
         <title>{post.title.rendered}</title>
     </head>
 
+    
     <body>
         <article>
+            <img class="featured-img" src={post.jetpack_featured_media_url} alt="">
             <h1>{post.title.rendered}</h1>
             <div class="post-content" set:html={post.content.rendered}></div>
         </article>
@@ -33,12 +35,28 @@ const { post }: { post: any } = Astro.props
         box-sizing: border-box;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+
+    article {
+        position: relative;
+    }
+
+    .featured-img {
+        width: 100%;
+        height: auto;
+        min-height: 75vh;
+        object-fit: cover;
+    }
+
     h1 {
         font-size: 2rem;
         font-weight: 500;
         text-transform: uppercase;
         margin-bottom: 1rem;
+        text-align: center;
     }
+
+/* .POST-CONTENT is injected raw HTML from WP, not scoped with Astro classes */
+/* This is why we need :global & a class to target them but not spill out */
 
     :global(.post-content) {
         margin: 1rem auto;
