@@ -5,10 +5,6 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-main {
-    margin: 1rem;
-}
-
 h1 {
     margin-bottom: 1rem;
     font-weight: 400;
@@ -19,4 +15,23 @@ p {
     margin-bottom: 1rem;
     font-size: .9rem;
     width: 90%;
+}
+
+.page-content {
+    margin: 1rem auto;
+    max-width: 800px;
+}
+
+.page-content h1 {
+    font-size: 1.75rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 3rem 0;
+}
+
+.page-content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }

@@ -8,8 +8,8 @@ const pages = await getPages()
 
 <html lang="en">
 <PageLayout pageTitle={pageTitle}>
-	<main>
+	<main class="page-content">
 		<h1>{pages[2].title.rendered}</h1>
-		<div class="post-content" set:html={pages[2].content.rendered}></div>
+		<div set:html={pages[2].content.rendered}></div>
 	</main>
 </PageLayout>
