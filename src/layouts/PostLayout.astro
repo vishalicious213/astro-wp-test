@@ -1,4 +1,5 @@
 ---
+import Header from "../components/Header.astro"
 ---
 <html lang="en">
     <head>
@@ -9,7 +10,8 @@
         <!-- <title>{pageTitle}</title> -->
     </head>
     <body>
-        <!-- <Header /> -->
+        <Header />
+        <slot />
         <!-- <h1>{pageTitle}</h1> -->
         <!-- <Footer /> -->
         <!-- <script>

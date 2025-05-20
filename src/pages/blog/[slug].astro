@@ -1,4 +1,5 @@
 ---
+import PostLayout from "../../layouts/PostLayout.astro"
 import { getPosts } from "../../scripts/index"
 
 export async function getStaticPaths() {
@@ -11,25 +12,18 @@ export async function getStaticPaths() {
 }
 
 const { post }: { post: any } = Astro.props
+const pageTitle = post.title.rendered
 ---
-
-<html>
-    <head>
-        <title>{post.title.rendered}</title>
-    </head>
-
-    
-    <body>
-        <article>
-            <img class="featured-img" src={post.jetpack_featured_media_url} alt="">
-            <div class="post-details">
-                <p class="post-date">{post.date.toString().slice(0,10)}</p>
-                <h1 class="post-title">{post.title.rendered}</h1>
-            </div>
-            <div class="post-content" set:html={post.content.rendered}></div>
-        </article>
-    </body>
-</html>
+<PostLayout>
+    <article>
+        <img class="featured-img" src={post.jetpack_featured_media_url} alt="">
+        <div class="post-details">
+            <p class="post-date">{post.date.toString().slice(0,10)}</p>
+            <h1 class="post-title">{post.title.rendered}</h1>
+        </div>
+        <div class="post-content" set:html={post.content.rendered}></div>
+    </article>
+</PostLayout>
 
 <style>
     * {
