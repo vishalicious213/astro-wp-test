@@ -1,6 +1,6 @@
 ---
 import PostLayout from "../../layouts/PostLayout.astro"
-import { getPosts } from "../../scripts/index"
+import { getPosts } from "../../scripts/getPosts"
 
 export async function getStaticPaths() {
     const posts = await getPosts()
