@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { post }: { post: any } = Astro.props
 const pageTitle = post.title.rendered
 ---
-<PostLayout>
+<PostLayout pageTitle={pageTitle}>
     <article>
         <img class="featured-img" src={post.jetpack_featured_media_url} alt="">
         <div class="post-details">
