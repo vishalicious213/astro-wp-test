@@ -6,5 +6,8 @@ export async function getPages() {
     }
 
     const data = await response.json()
-    console.log(data)
+    // console.log(data.length)
+    // console.log(data[2])
+
+    return data
 }
