@@ -3,7 +3,7 @@
 <header>
     <h1>REDO FROM START</h1>
 
-    <nav>
+    <nav class="nav">
         <a href="/">Home</a>
         <a href="/about">About</a>
     </nav>
@@ -18,10 +18,8 @@
         color: white;
         padding: .5rem;
     }
-    nav {
-        display: flex;
-        justify-content: end;
-        outline: 1px solid red;
+    .nav {
+        display: none;
     }
 
     h1 {
@@ -39,5 +37,13 @@
 
     a:hover {
         color: white;
+    }
+
+    @media screen and (min-width: 570px) {
+        .nav {
+            display: flex;
+            justify-content: end;
+            outline: 1px solid red;
+        }
     }
 </style>
