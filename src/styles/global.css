@@ -5,6 +5,10 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body {
+    margin: 3.75rem 0 0;
+}
+
 h1 {
     margin-bottom: 1rem;
     font-weight: 400;
@@ -28,7 +32,7 @@ p {
     text-align: center;
     text-transform: uppercase;
     font-weight: 500;
-    margin: 3rem 0;
+    margin: 5rem 0 3rem;
 }
 
 .page-content img {
