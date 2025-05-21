@@ -8,8 +8,20 @@
         <a href="/about">About</a>
     </nav>
 
-    <div class="trigram">☰</div>
+    <div id="trigram" class="trigram">☰</div>
+
 </header>
+
+<ul class="burger-menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+
+<script>
+    document.getElementById("trigram")?.addEventListener("click", function(e) {
+        console.log("clicked")
+    })
+</script>
 
 <style>
     header {
@@ -27,6 +39,18 @@
     .trigram {
         font-size: 1.5rem;
         cursor: pointer;
+    }
+
+    .burger-menu {
+        position: absolute;
+        right: 0;
+        background: black;
+        z-index: 1;
+        outline: 1px solid yellow;
+    }
+
+    .hide {
+        display: none;
     }
 
     h1 {
