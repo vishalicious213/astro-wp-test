@@ -18,7 +18,7 @@ p {
 }
 
 .page-content {
-    margin: 1rem auto;
+    margin: 0 auto 1rem;
     max-width: 800px;
     padding: 0 1rem;
 }
