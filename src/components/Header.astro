@@ -1,16 +1,31 @@
 ---
 ---
-<nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-</nav>
+<header>
+    <h1>REDO FROM START</h1>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
 
 <style>
+    header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        background: black;
+        color: white;
+        padding: .5rem;
+    }
     nav {
         display: flex;
         justify-content: end;
-        background: black;
-        padding: .5rem;
+        outline: 1px solid red;
+    }
+
+    h1 {
+        outline: 1px solid red;
     }
 
     a {
