@@ -5,11 +5,9 @@ import { getPages } from "../scripts/getPages"
 const pageTitle = "About - Astro / WordPress"
 const pages = await getPages()
 ---
-
-<html lang="en">
 <PageLayout pageTitle={pageTitle}>
 	<main class="page-content">
 		<h1>{pages[2].title.rendered}</h1>
-		<div set:html={pages[2].content.rendered}></div>
+		<div class="page-wp-content" set:html={pages[2].content.rendered}></div>
 	</main>
 </PageLayout>
