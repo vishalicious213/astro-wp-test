@@ -12,14 +12,14 @@
 
 </header>
 
-<ul class="burger-menu">
+<ul id="burger-menu" class="burger-menu hide">
     <li><a href="/">Home</a></li>
     <li><a href="/about">About</a></li>
 </ul>
 
 <script>
     document.getElementById("trigram")?.addEventListener("click", function(e) {
-        console.log("clicked")
+        document.getElementById("burger-menu")?.classList.toggle("hide")
     })
 </script>
 
