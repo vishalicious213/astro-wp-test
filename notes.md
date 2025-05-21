@@ -10,3 +10,5 @@
     - Make a layout for the blog posts
 - Bring in some Pages from WP
     - Make a layout for the pages
+- Add a navigation menu (desktop)
+- Add a burger menu (mobile)
