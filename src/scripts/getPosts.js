@@ -18,7 +18,7 @@ async function fixText(text) {
 }
 
 export async function getPosts() {
-    const response = await fetch("https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts")
+    const response = await fetch("https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts?per_page=12&page=1")
     
     if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`)
