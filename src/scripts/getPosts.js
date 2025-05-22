@@ -24,11 +24,9 @@ export async function getPosts() {
         throw new Error(`HTTP error: ${response.status}`)
     }
     const data = await response.json()
-    const total = response.headers.get('X-WP-Total')
-    const totalPages = response.headers.get('X-WP-TotalPages')
-    // console.log("headers", response.headers.HeadersList)
-    console.log('Total posts:', total)
-    console.log('Total pages:', totalPages)
+    const total = parseInt(response.headers.get('X-WP-Total'), 10)
+    const totalPages = parseInt(response.headers.get('X-WP-TotalPages'), 10)
+
 
     // Decode title and excerpt for each post
     const decodedPosts = await data.map(post => ({
@@ -49,5 +47,9 @@ export async function getPosts() {
 
     // console.log(decodedPosts[3].content.rendered)
 
-    return decodedPosts
+    return {
+        posts: decodedPosts,
+        total,
+        totalPages
+    }
 }

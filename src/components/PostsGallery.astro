@@ -1,6 +1,6 @@
 ---
 import { getPosts } from "../scripts/getPosts"
-const posts = await getPosts()
+const { posts, total, totalPages } = await getPosts()
 ---
 <section class="post-gallery">
     {posts.map((post: any) => (
