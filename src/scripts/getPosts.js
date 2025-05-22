@@ -50,6 +50,7 @@ export async function getPosts(page=1, perPage=12) {
     return {
         posts: decodedPosts,
         total,
-        totalPages
+        totalPages,
+        currentPage: page
     }
 }
