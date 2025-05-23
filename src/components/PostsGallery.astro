@@ -25,7 +25,7 @@ const { posts, total, totalPages } = await getPosts()
 <p id="loading" style="text-align:center; display:none;">Loading more posts…</p>
 <p id="end" style="text-align:center; display:none;">You've reached the end!</p>
 
-<script is:client type="module">
+<script type="module">
     window.addEventListener('DOMContentLoaded', () => {
         const gallery = document.getElementById('post-gallery')
         const loading = document.getElementById('loading')
@@ -79,7 +79,7 @@ const { posts, total, totalPages } = await getPosts()
     })
 </script>
 
-<style>
+<style is:global>
     .post-gallery {
         display: flex;
         flex-wrap: wrap;
