@@ -10,6 +10,7 @@ const { posts, total, totalPages } = await getPosts()
             <a href={`/blog/${post.slug}`}>
                 <img 
                     class="thumb-img" 
+                    loading="lazy" 
                     src={post.jetpack_featured_media_url} 
                     alt={post.title.rendered}
                 />
@@ -50,11 +51,11 @@ const { posts, total, totalPages } = await getPosts()
 
                 section.innerHTML = `
                     <a href="/blog/${post.slug}">
-                    <img class="thumb-img" src="${post.jetpack_featured_media_url}" alt="${post.title.rendered}" />
-                    <div class="thumb-details">
-                        <p class="thumb-date">${post.date.slice(0,10)}</p>
-                        <h2 class="thumb-title">${post.title.rendered}</h2>
-                    </div>
+                        <img class="thumb-img" loading="lazy" src="${post.jetpack_featured_media_url}" alt="${post.title.rendered}" />
+                        <div class="thumb-details">
+                            <p class="thumb-date">${post.date.slice(0,10)}</p>
+                            <h2 class="thumb-title">${post.title.rendered}</h2>
+                        </div>
                     </a>
                 `
                 gallery.appendChild(section)
@@ -119,8 +120,9 @@ const { posts, total, totalPages } = await getPosts()
 
     .thumb-details {
         position: absolute;
-        bottom: 0;
+        bottom: .5rem;
         width: 100%;
+        z-index: 2;
         color: white;
         padding: 0 1rem;
         text-align: center;
@@ -128,17 +130,11 @@ const { posts, total, totalPages } = await getPosts()
         box-sizing: border-box;
     }
 
-    .thumb-details {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        z-index: 2;
-    }
-
     .thumb-date {
         color: white;
         font-size: .75rem;
         margin-bottom: .25rem;
+        width: 100%;
     }
 
     .thumb-title {
