@@ -14,40 +14,57 @@ export function infiniteScroll() {
             isLoading = true
             loading.style.display = 'block'
 
-            const res = await fetch(`https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts?per_page=12&page=${currentPage + 1}`)
-            const newPosts = await res.json()
-            currentPage++
+            try {
+                const res = await fetch(
+                    `https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts?per_page=12&page=${currentPage + 1}`
+                )
 
-            newPosts.forEach(post => {
-                const article = document.createElement('article')
-                article.className = 'post-thumb'
+                if (!res.ok) throw new Error("Failed to fetch more posts")
 
-                article.innerHTML = `
-                    <a href="/blog/${post.slug}">
-                        <img 
-                            class="thumb-img" 
-                            loading="lazy" 
-                            width="300"
-                            height="300"
-                            src="${post.jetpack_featured_media_url || "/no-featured-img.webp"}" 
-                            alt="${post.title.rendered}" 
-                        />
-                        <div class="thumb-details">
-                            <p class="thumb-date">${post.date.slice(0,10)}</p>
-                            <h2 class="thumb-title">${post.title.rendered}</h2>
-                        </div>
-                    </a>
-                `
-                gallery.appendChild(article)
-            })
+                const newPosts = await res.json()
+                currentPage++
 
-            loading.style.display = 'none'
+                newPosts.forEach((post) => {
+                    const article = document.createElement("article")
+                    article.className = "post-thumb"
 
-            if (currentPage >= totalPages) {
-                end.style.display = 'block'
+                    const img = document.createElement("img")
+                    img.className = "thumb-img"
+                    img.loading = "lazy"
+                    img.src = post.jetpack_featured_media_url || "/no-featured-img.webp"
+                    img.alt = post.title.rendered
+                    img.width = 300
+                    img.height = 300
+
+                    const link = document.createElement("a")
+                    link.href = `/blog/${post.slug}`
+
+                    const details = document.createElement("div")
+                    details.className = "thumb-details"
+
+                    const date = document.createElement("p")
+                    date.className = "thumb-date"
+                    date.textContent = post.date.slice(0, 10)
+
+                    const title = document.createElement("h2")
+                    title.className = "thumb-title"
+                    title.innerHTML = post.title.rendered
+
+                    details.append(date, title)
+                    link.append(img, details)
+                    article.appendChild(link)
+                    gallery.appendChild(article)
+                })
+
+                if (currentPage >= totalPages) {
+                end.style.display = "block"
+                }
+            } catch (err) {
+                console.error("Error loading posts:", err)
+            } finally {
+                loading.style.display = "none"
+                isLoading = false
             }
-
-            isLoading = false
         }
 
         function handleScroll() {
