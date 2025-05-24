@@ -11,6 +11,8 @@ const { posts, total, totalPages } = await getPosts()
                 <img 
                     class="thumb-img" 
                     loading="lazy" 
+                    width="300"
+                    height="300"
                     src={post.jetpack_featured_media_url || "/no-featured-img.webp"} 
                     alt={post.title.rendered}
                 />
@@ -35,12 +37,10 @@ const { posts, total, totalPages } = await getPosts()
         display: flex;
         flex-wrap: wrap;
         background: black;
-        /* margin-top: 1rem; */
     }
 
     .post-thumb {
         position: relative;
-        min-height: 33vh;
     }
 
     /* hidden red overlay that will appear when post is hovered */
@@ -64,7 +64,7 @@ const { posts, total, totalPages } = await getPosts()
 
     .thumb-img {
         width: 100%;
-        min-height: 33vh;
+        height: auto;
         object-fit: cover;
     }
 
