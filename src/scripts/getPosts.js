@@ -17,7 +17,7 @@ async function fixText(text) {
     return newText
 }
 
-export async function getPosts(page=1, perPage=12) {
+export async function getPosts(page=1, perPage=24) {
     const response = await fetch(`https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts?per_page=${perPage}&page=${page}`)
     
     if (!response.ok) {

@@ -1,9 +1,9 @@
 ---
 import PostLayout from "../../layouts/PostLayout.astro"
-import { getPosts } from "../../scripts/getPosts"
+import { getAllPosts } from "../../scripts/getAllPosts"
 
 export async function getStaticPaths() {
-    const posts = await getPosts()
+    const posts = await getAllPosts()
 
     return posts.map((post: any) => ({
         params: { slug: post.slug },
@@ -16,7 +16,7 @@ const pageTitle = post.title.rendered
 ---
 <PostLayout pageTitle={pageTitle}>
     <article>
-        <img class="featured-img" src={post.jetpack_featured_media_url} alt="">
+        <img class="featured-img" src={post.jetpack_featured_media_url} alt={post.title.rendered}>
         <div class="post-details">
             <p class="post-date">{post.date.toString().slice(0,10)}</p>
             <h1 class="post-title">{post.title.rendered}</h1>
