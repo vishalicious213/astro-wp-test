@@ -3,7 +3,6 @@
 - Clean up the Unicode from the blog posts on their pages
     - This is harder than it seems, its probably WP sending Latin-1 text instead of UTF-8
 - Optimize pagination
-- Make fallback image work in gallery for posts with no featured image
 
 ## Done
 
@@ -14,3 +13,4 @@
 - Add a navigation menu (desktop)
 - Add a burger menu (mobile)
 - Add pagination to the gallery page / index
+- Make fallback image work in gallery for posts with no featured image
