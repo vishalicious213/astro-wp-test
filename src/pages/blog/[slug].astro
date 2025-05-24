@@ -10,6 +10,7 @@ export async function getStaticPaths() {
         props: { post },
     }))
 }
+export const prerender = true
 
 const { post }: { post: any } = Astro.props
 const pageTitle = post.title.rendered
