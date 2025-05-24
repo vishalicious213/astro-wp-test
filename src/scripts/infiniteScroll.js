@@ -24,7 +24,7 @@ export function infiniteScroll() {
 
                 section.innerHTML = `
                     <a href="/blog/${post.slug}">
-                        <img class="thumb-img" loading="lazy" src="${post.jetpack_featured_media_url}" alt="${post.title.rendered}" />
+                        <img class="thumb-img" loading="lazy" src="${post.jetpack_featured_media_url || "/no-featured-img.webp"}" alt="${post.title.rendered}" />
                         <div class="thumb-details">
                             <p class="thumb-date">${post.date.slice(0,10)}</p>
                             <h2 class="thumb-title">${post.title.rendered}</h2>

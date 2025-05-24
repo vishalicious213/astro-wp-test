@@ -11,7 +11,7 @@ const { posts, total, totalPages } = await getPosts()
                 <img 
                     class="thumb-img" 
                     loading="lazy" 
-                    src={post.jetpack_featured_media_url} 
+                    src={post.jetpack_featured_media_url || "/no-featured-img.webp"} 
                     alt={post.title.rendered}
                 />
                 <div class="thumb-details">
