@@ -19,10 +19,10 @@ export function infiniteScroll() {
             currentPage++
 
             newPosts.forEach(post => {
-                const section = document.createElement('section')
-                section.className = 'post-thumb'
+                const article = document.createElement('article')
+                article.className = 'post-thumb'
 
-                section.innerHTML = `
+                article.innerHTML = `
                     <a href="/blog/${post.slug}">
                         <img class="thumb-img" loading="lazy" src="${post.jetpack_featured_media_url || "/no-featured-img.webp"}" alt="${post.title.rendered}" />
                         <div class="thumb-details">
@@ -31,7 +31,7 @@ export function infiniteScroll() {
                         </div>
                     </a>
                 `
-                gallery.appendChild(section)
+                gallery.appendChild(article)
             })
 
             loading.style.display = 'none'

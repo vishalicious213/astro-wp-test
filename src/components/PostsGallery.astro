@@ -6,7 +6,7 @@ const { posts, total, totalPages } = await getPosts()
 ---
 <section id="post-gallery" class="post-gallery" data-total-pages={totalPages}>
     {posts.map((post: any) => (
-        <section class="post-thumb">
+        <article class="post-thumb">
             <a href={`/blog/${post.slug}`}>
                 <img 
                     class="thumb-img" 
@@ -19,7 +19,7 @@ const { posts, total, totalPages } = await getPosts()
                     <h2 class="thumb-title">{post.title.rendered}</h2>
                 </div>
             </a>
-        </section>
+        </article>
     ))}
 </section>
 
