@@ -87,11 +87,11 @@ const pageTitle = post.title.rendered
         font-size: 1.5rem;
         font-weight: 500;
         text-transform: uppercase;
-        margin-bottom: 1rem;
+        margin: 1rem 0;
     }
 
     :global(.post-content p) {
-        margin-bottom: 1rem;
+        margin: 0 auto 1rem;
         font-size: .9rem;
         width: 90%;
     }
@@ -155,5 +155,13 @@ const pageTitle = post.title.rendered
     :global(.wp-block-list li) {
         margin-bottom: .25rem;
         font-size: .9rem;
+    }
+
+    /* MEDIA QUERIES */
+
+    @media screen and (min-width: 768px) {
+        :global(.post-content p) {
+            width: 80%;
+        }
     }
 </style>
