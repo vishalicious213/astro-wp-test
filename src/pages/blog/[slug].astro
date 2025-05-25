@@ -96,7 +96,7 @@ const pageTitle = post.title.rendered
     }
 
     :global(.post-content p) {
-        margin: 0 auto 1rem;
+        margin: 1rem auto;
         font-size: .9rem;
         width: 90%;
     }
@@ -155,6 +155,8 @@ const pageTitle = post.title.rendered
 
     :global(.wp-block-list) {
         list-style-type: square;
+        width: 90%;
+        margin: 0 auto 1rem;
     }
 
     :global(.wp-block-list li) {
@@ -165,7 +167,12 @@ const pageTitle = post.title.rendered
     /* MEDIA QUERIES */
 
     @media screen and (min-width: 768px) {
-        :global(.post-content p, .post-content h1, .post-content h2){
+        :global(
+            .post-content p, 
+            .post-content h1, 
+            .post-content h2,
+            .wp-block-list
+        ){
             width: 80%;
         }
     }
