@@ -1,7 +1,5 @@
 # To do:
 
-- Clean up the Unicode from the blog posts on their pages
-    - This is harder than it seems, its probably WP sending Latin-1 text instead of UTF-8
 - Optimize pagination
 
 ## Done
@@ -14,3 +12,6 @@
 - Add a burger menu (mobile)
 - Add pagination to the gallery page / index
 - Make fallback image work in gallery for posts with no featured image
+- Clean up the Unicode from the blog posts on their pages
+    - This is harder than it seems, its probably WP sending Latin-1 text instead of UTF-8
+    - Not sure why its working now, could be adding prerender to [slug]
