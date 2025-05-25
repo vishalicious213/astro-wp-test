@@ -1,7 +1,7 @@
 ---
 import { getPosts } from "../scripts/getPosts"
 import { decode } from "entities"
-export const prerender = true
+
 const { posts, total, totalPages } = await getPosts()
 ---
 <section id="post-gallery" class="post-gallery" data-total-pages={totalPages}>
@@ -37,10 +37,13 @@ const { posts, total, totalPages } = await getPosts()
         display: flex;
         flex-wrap: wrap;
         background: black;
+        /* margin-top: 1rem; */
     }
 
     .post-thumb {
         position: relative;
+        width: 100%;
+        min-height: 33vh;
     }
 
     /* hidden red overlay that will appear when post is hovered */
@@ -64,7 +67,7 @@ const { posts, total, totalPages } = await getPosts()
 
     .thumb-img {
         width: 100%;
-        height: auto;
+        min-height: 33vh;
         object-fit: cover;
     }
 
