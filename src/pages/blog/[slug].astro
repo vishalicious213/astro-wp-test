@@ -165,6 +165,18 @@ const pageTitle = post.title.rendered
         font-size: .9rem;
     }
 
+    :global(.tiled-gallery__row) {
+        display: flex;
+        gap: .25rem;
+        width: 100%;
+    }
+
+    :global(.tiled-gallery__item img) {
+        width: 100%;
+        min-height: 9rem;
+        object-fit: cover;
+    }
+
     /* MEDIA QUERIES */
 
     @media screen and (min-width: 768px) {
