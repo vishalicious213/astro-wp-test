@@ -27,8 +27,8 @@ const { posts, total, totalPages } = await getPosts()
 
 <div id="scroll-trigger" style="height: 1px;"></div>
 
-<p id="loading" style="text-align:center; display:none;">Loading more posts…</p>
-<p id="end" style="text-align:center; display:none;">You've reached the end!</p>
+<p id="loading" class="loading" style="text-align:center; display:none;">Loading more posts…</p>
+<p id="end" class="end" style="text-align:center; display:none;">You've reached the end!</p>
 
 <script src="/scripts/infiniteScroll.js" type="module"></script>
 
@@ -94,6 +94,13 @@ const { posts, total, totalPages } = await getPosts()
         font-weight: 400;
         font-size: 1rem;
         margin-top: 0;
+    }
+
+    .end, .loading {
+        width: 100%;
+        background: #28282B;
+        color: white;
+        padding: 1rem;
     }
 
     /* MEDIA QUERIES */
