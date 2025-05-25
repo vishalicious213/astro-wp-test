@@ -114,14 +114,15 @@ const pageTitle = post.title.rendered
     }
 
     :global(.wp-block-code code) {
-        display: inline-block;
+        display: block;
         background: #F2F2F2;
         padding: 1rem;
+        margin: auto;
+        width: 90%;
         text-wrap: wrap;
         word-wrap: break-word;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         font-size: .8rem;
-        width: 90%;
         line-height: 1.5;
     }
 
@@ -171,7 +172,8 @@ const pageTitle = post.title.rendered
             .post-content p, 
             .post-content h1, 
             .post-content h2,
-            .wp-block-list
+            .wp-block-list,
+            .wp-block-code code
         ){
             width: 80%;
         }
