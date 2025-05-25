@@ -83,7 +83,13 @@ const pageTitle = post.title.rendered
         font-weight: 500;
     }
 
-    :global(.post-content h1) {
+    :global(
+        .post-content h1,
+        .post-content h2,
+        .post-content h3,
+        .post-content h4,
+        .post-content h5
+    ) {
         margin: 1rem auto;
         width: 90%;
     }
@@ -91,8 +97,6 @@ const pageTitle = post.title.rendered
         font-size: 1.5rem;
         font-weight: 500;
         text-transform: uppercase;
-        margin: 1rem auto;
-        width: 90%;
     }
 
     :global(.post-content p) {
@@ -198,10 +202,17 @@ const pageTitle = post.title.rendered
             .post-content p, 
             .post-content h1, 
             .post-content h2,
+            .post-content h3,
+            .post-content h4,
+            .post-content h5,
             .wp-block-list,
             .wp-block-code code
         ){
             width: 80%;
+        }
+
+        :global(.post-content h5) {
+            outline: 1px solid red;
         }
     }
 </style>
