@@ -83,11 +83,16 @@ const pageTitle = post.title.rendered
         font-weight: 500;
     }
 
+    :global(.post-content h1) {
+        margin: 1rem auto;
+        width: 90%;
+    }
     :global(.post-content h2) {
         font-size: 1.5rem;
         font-weight: 500;
         text-transform: uppercase;
-        margin: 1rem 0;
+        margin: 1rem auto;
+        width: 90%;
     }
 
     :global(.post-content p) {
@@ -160,7 +165,7 @@ const pageTitle = post.title.rendered
     /* MEDIA QUERIES */
 
     @media screen and (min-width: 768px) {
-        :global(.post-content p) {
+        :global(.post-content p, .post-content h1, .post-content h2){
             width: 80%;
         }
     }
