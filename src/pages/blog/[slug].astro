@@ -134,12 +134,21 @@ const pageTitle = post.title.rendered
     :global(.wp-block-gallery) {
         display: flex;
         flex-wrap: wrap;
+        align-items: stretch;
         gap: .5rem;
     }
 
     :global(.wp-block-gallery figure) {
         margin: 0;
         flex: 0 0 calc(50% - .25rem);
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    :global(.wp-block-gallery figure img) {
+        height: 100%;
+        object-fit: cover;
     }
 
     :global(.wp-block-gallery figure:only-child,
