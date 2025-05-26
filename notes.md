@@ -1,6 +1,9 @@
 # To do:
 
-- Optimize pagination
+- Likes
+- Comments
+- Categories
+- Tags
 
 ## Done
 
