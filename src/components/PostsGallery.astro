@@ -1,13 +1,12 @@
 ---
 import { getPosts } from "../scripts/getPosts"
-import { decode } from "entities"
 
-const { posts, total, totalPages } = await getPosts()
+const { posts, totalPages } = await getPosts()
 ---
 <section id="post-gallery" class="post-gallery" data-total-pages={totalPages}>
     {posts.map((post: any) => (
         <article class="post-thumb">
-            <a href={`/blog/${post.slug}`}>
+            <a href={`/blog/${post.slug}`} rel="prefetch">
                 <img 
                     class="thumb-img" 
                     loading="lazy" 
