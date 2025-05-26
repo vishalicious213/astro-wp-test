@@ -1,80 +1,96 @@
-export function infiniteScroll() {
-    console.log("infinite scroll")
-    window.addEventListener('DOMContentLoaded', () => {
-        const gallery = document.getElementById('post-gallery')
-        const loading = document.getElementById('loading')
-        const end = document.getElementById('end')
-        const totalPages = Number(gallery.dataset.totalPages)
+let currentPage = 1
+let isLoading = false
 
-        let currentPage = 1
-        let isLoading = false
+window.addEventListener("DOMContentLoaded", async () => {
+    const gallery = document.getElementById("post-gallery")
+    const loading = document.getElementById("loading")
+    const end = document.getElementById("end")
+    const totalPages = Number(gallery.dataset.totalPages)
 
-        async function loadMorePosts() {
-            if (isLoading || currentPage >= totalPages) return
-            isLoading = true
-            loading.style.display = 'block'
+    const savedPage = Number(sessionStorage.getItem("scrollPage") || 1)
+    const savedScroll = Number(sessionStorage.getItem("scrollPos") || 0)
 
-            try {
-                const res = await fetch(
-                    `https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts?per_page=12&page=${currentPage + 1}`
-                )
+    // load previously viewed pages before restoring scroll
+    while (currentPage < savedPage && currentPage < totalPages) {
+        await loadMorePosts(gallery, loading, end, totalPages)
+    }
 
-                if (!res.ok) throw new Error("Failed to fetch more posts")
+    // restore scroll after posts are loaded
+    if (savedScroll > 0) {
+        window.scrollTo({ top: savedScroll, behavior: "auto" })
+        sessionStorage.removeItem("scrollPos")
+        sessionStorage.removeItem("scrollPage")
+    }
 
-                const newPosts = await res.json()
-                currentPage++
-
-                newPosts.forEach((post) => {
-                    const article = document.createElement("article")
-                    article.className = "post-thumb"
-
-                    const img = document.createElement("img")
-                    img.className = "thumb-img"
-                    img.loading = "lazy"
-                    img.src = post.jetpack_featured_media_url || "/no-featured-img.webp"
-                    img.alt = post.title.rendered
-                    img.width = 300
-                    img.height = 300
-
-                    const link = document.createElement("a")
-                    link.href = `/blog/${post.slug}`
-
-                    const details = document.createElement("div")
-                    details.className = "thumb-details"
-
-                    const date = document.createElement("p")
-                    date.className = "thumb-date"
-                    date.textContent = post.date.slice(0, 10)
-
-                    const title = document.createElement("h2")
-                    title.className = "thumb-title"
-                    title.innerHTML = post.title.rendered
-
-                    details.append(date, title)
-                    link.append(img, details)
-                    article.appendChild(link)
-                    gallery.appendChild(article)
-                })
-
-                if (currentPage >= totalPages) {
-                end.style.display = "block"
-                }
-            } catch (err) {
-                console.error("Error loading posts:", err)
-            } finally {
-                loading.style.display = "none"
-                isLoading = false
-            }
+    // begin listening for scroll to load more
+    window.addEventListener("scroll", () => {
+        if (
+            window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 300
+        ) {
+            loadMorePosts(gallery, loading, end, totalPages)
         }
-
-        function handleScroll() {
-            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
-                loadMorePosts()
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll)
     })
-}
 
-infiniteScroll()
+    // save scroll position and page on navigation
+    window.addEventListener("beforeunload", () => {
+        sessionStorage.setItem("scrollPos", window.scrollY)
+        sessionStorage.setItem("scrollPage", currentPage)
+    })
+})
+
+async function loadMorePosts(gallery, loading, end, totalPages) {
+    if (isLoading || currentPage >= totalPages) return
+
+    isLoading = true
+    loading.style.display = "block"
+
+    try {
+        const nextPage = currentPage + 1
+        const res = await fetch(
+            `https://public-api.wordpress.com/wp/v2/sites/neophyte.home.blog/posts?per_page=12&page=${nextPage}`
+        )
+
+        if (!res.ok) {
+            console.error("Failed to load posts:", res.statusText)
+            loading.style.display = "none"
+            isLoading = false
+            return
+        }
+
+        const newPosts = await res.json()
+        currentPage++
+
+        newPosts.forEach((post) => {
+            const article = document.createElement("article")
+            article.className = "post-thumb"
+            article.innerHTML = `
+                <a href="/blog/${post.slug}">
+                    <img 
+                        class="thumb-img" 
+                        loading="lazy"
+                        width="300" 
+                        height="300"
+                        src="${post.jetpack_featured_media_url || "/no-featured-img.webp"}"
+                        alt="${post.title.rendered}"
+                    />
+                    <div class="thumb-details">
+                        <p class="thumb-date">${post.date.slice(0, 10)}</p>
+                        <h2 class="thumb-title">${post.title.rendered}</h2>
+                    </div>
+                </a>
+            `
+            gallery.appendChild(article)
+        })
+
+        loading.style.display = "none"
+
+        if (currentPage >= totalPages) {
+            end.style.display = "block"
+        }
+    } catch (err) {
+        console.error("Error loading posts:", err)
+    }
+
+    isLoading = false
+}
