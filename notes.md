@@ -15,3 +15,6 @@
 - Clean up the Unicode from the blog posts on their pages
     - This is harder than it seems, its probably WP sending Latin-1 text instead of UTF-8
     - Not sure why its working now, could be adding prerender to [slug]
+- Changed pagination to infinite scrolling
+- Upgraded infinite scrolling to IntersectionObserver
+- Added prefetch to posts in PostsGallery
