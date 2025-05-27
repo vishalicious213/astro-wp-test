@@ -25,6 +25,8 @@ const pageTitle = post.title.rendered
             <h1 class="post-title">{post.title.rendered}</h1>
         </div>
         <div class="post-content" set:html={post.content.rendered}></div>
+        <div>Categories: {categoryNames}</div>
+        <div>Tags: {tagNames}</div>
     </article>
 </PostLayout>
 

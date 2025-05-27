@@ -13,9 +13,6 @@ export async function getPostTags(postId) {
     const categories = await categoriesRes.json()
     const tags = await tagsRes.json()
 
-    console.log("Categories", categories)
-    console.log("Tags", tags)
-
     return {
         categoryNames: categories.map(cat => cat.name),
         tagNames: tags.map(tag => tag.name)
