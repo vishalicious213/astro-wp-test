@@ -25,8 +25,8 @@ const pageTitle = post.title.rendered
             <h1 class="post-title">{post.title.rendered}</h1>
         </div>
         <div class="post-content" set:html={post.content.rendered}></div>
-        <div>Categories: {categoryNames}</div>
-        <div>Tags: {tagNames}</div>
+        <div class="post-meta">Categories: {categoryNames.map((item: string) => <span class="category-tag">{item}</span>)}</div>
+        <div class="post-meta">Tags: {tagNames.map((item: string) => <span class="category-tag">{item}</span>)}</div>
     </article>
 </PostLayout>
 
@@ -70,6 +70,22 @@ const pageTitle = post.title.rendered
 
     .post-date {
         margin-bottom: .5rem;
+    }
+
+    .post-meta {
+        padding: 0 1rem;
+        width: 90%;
+        max-width: 650px;
+        margin: auto;
+    }
+
+    .category-tag {
+        display: inline-block;
+        background: #AB1226;
+        color: white;
+        padding: .5rem .75rem;
+        margin: .1rem .25rem;
+        border-radius: .5rem;
     }
 
 /* .POST-CONTENT is injected raw HTML from WP, not scoped with Astro classes */
@@ -212,6 +228,10 @@ const pageTitle = post.title.rendered
             .wp-block-list,
             .wp-block-code code
         ){
+            width: 80%;
+        }
+
+        .post-meta {
             width: 80%;
         }
     }
