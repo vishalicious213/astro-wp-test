@@ -1,7 +1,9 @@
 ---
 import PostLayout from "../../layouts/PostLayout.astro"
 import { getAllPosts } from "../../scripts/getAllPosts"
+import { getPostTags } from "../../scripts/getPostTags"
 
+export const prerender = true
 export async function getStaticPaths() {
     const posts = await getAllPosts()
 
@@ -10,9 +12,9 @@ export async function getStaticPaths() {
         props: { post },
     }))
 }
-export const prerender = true
 
 const { post }: { post: any } = Astro.props
+const { categoryNames, tagNames } = await getPostTags(post.id)
 const pageTitle = post.title.rendered
 ---
 <PostLayout pageTitle={pageTitle}>
