@@ -26,8 +26,10 @@ const pageTitle = post.title.rendered
         </div>
         <div class="post-content" set:html={post.content.rendered}></div>
         <section class="post-meta">
-            <div class="post-meta-detail"><b>Categories:</b> {categoryNames.map((item: string) => <span class="category-tag">{item}</span>)}</div>
-            <div class="post-meta-detail"><b>Tags:</b> {tagNames.map((item: string) => <span class="category-tag">{item}</span>)}</div>
+            <div class="post-meta-detail"><b>Categories:</b></div>
+            <div class="post-meta-detail">{categoryNames.map((item: string) => <span class="category-tag">{item}</span>)}</div>
+            <div class="post-meta-detail"><b>Tags:</b></div>
+            <div class="post-meta-detail">{tagNames.map((item: string) => <span class="category-tag">{item}</span>)}</div>
         </section>
     </article>
 </PostLayout>
