@@ -2,8 +2,6 @@
 
 - Likes
 - Comments
-- Categories
-- Tags
 
 ## Done
 
@@ -21,3 +19,4 @@
 - Changed pagination to infinite scrolling
 - Upgraded infinite scrolling to IntersectionObserver
 - Added prefetch to posts in PostsGallery
+- Rendering categories & tags
