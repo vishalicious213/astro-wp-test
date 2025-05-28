@@ -2,6 +2,9 @@
 
 - Likes
 - Comments
+- Page views
+- Post views
+- Authentication (for all of the above)
 
 ## Done
 
